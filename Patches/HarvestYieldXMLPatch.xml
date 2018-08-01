@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationRemove">
+		<xpath>/Defs/StatDef[defName = "MiningYield" or defName = "AnimalGatherYield" or defName = "PlantHarvestYield" or defName = "ButcheryFleshEfficiency" or defName = "ButcheryMechanoidEfficiency"]/maxValue</xpath>
+	</Operation>
+</Patch>
