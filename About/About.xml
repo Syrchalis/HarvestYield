@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Harvest Yield Patch</name>
+    <author>Syrchalis</author>
+    <targetVersion>1.0.1981</targetVersion>
+    <description>Changes Plant Harvest Yield to actually affect the yield and not just the chance to successfully harvest. </description>
+</ModMetaData>
