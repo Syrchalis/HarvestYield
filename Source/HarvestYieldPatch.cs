@@ -17,12 +17,18 @@ namespace HarvestYieldPatch
         public static MethodInfo TargetMethod()
         {
             Type mainType = typeof(JobDriver_PlantWork);
-            Log.Message("TargetMethod: Main Type Found");
-            Type iteratorType = mainType.GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.FullName.Contains("c_Iterator"));
-            Log.Message("TargetMethod: Iterator Type Resolved");
-            Type anonStoreyType = iteratorType.GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.FullName.Contains("c_AnonStorey"));
-            Log.Message("TargetMethod: AnonStorey Type Resolved");
-            return anonStoreyType.GetMethods().First(m => m.ReturnType == typeof(void));
+#if DEBUG
+            Log.Message("[HarvestYieldPatch]TargetMethod: Main Type Found");
+#endif
+            Type iteratorType = mainType.GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.FullName.Contains("c__Iterator"));
+#if DEBUG
+            Log.Message("[HarvestYieldPatch]TargetMethod: Iterator Type Resolved");
+#endif
+            Type anonStoreyType = iteratorType.GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.FullName.Contains("c__AnonStorey"));
+#if DEBUG
+            Log.Message("[HarvestYieldPatch]TargetMethod: AnonStorey Type Resolved");
+#endif
+            return anonStoreyType.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).First(m => m.Name.Contains("m__") && m.ReturnType == typeof(void));
         }
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instr)
         {
@@ -30,7 +36,7 @@ namespace HarvestYieldPatch
             {
                 if (i.operand == match)
                 {
-                    Log.Message("Instruction insertion complete!");
+                    //Log.Message("Instruction insertion complete!");
                     yield return new CodeInstruction(OpCodes.Ldloc_0);
                     yield return new CodeInstruction(OpCodes.Call, replaceWith);
                 }
@@ -47,12 +53,16 @@ namespace HarvestYieldPatch
 
             if (harvestFactor < 1)
             {
-                Log.Message("harvest Factor <1");
+#if DEBUG
+                Log.Message("harvestFactor (<1):" + harvestFactor + " and harvestAmount:" + harvestAmount);
+#endif
                 return p.YieldNow();
             }
             else
             {
-                Log.Message("harvest Factor >1");
+#if DEBUG
+                Log.Message("harvestFactor (>1):" + harvestFactor + " and harvestAmount:" + harvestAmount);
+#endif
                 return GenMath.RoundRandom(harvestAmount);
             };
         }
