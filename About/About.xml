@@ -2,7 +2,7 @@
 <ModMetaData>
     <name>Harvest Yield Patch</name>
     <author>Syrchalis</author>
-    <targetVersion>1.0.1982</targetVersion>
+    <targetVersion>0.19.1987</targetVersion>
     <description>You think you know what the stat "Plant Harvest Yield" does? Well, let me surprise you - it does NOT increase the amount you get when you harvest plants, like "Mining Yield" does for ores.
 
 It merely gives you a chance to fail below 100%, above 100% you do not gain anything.
