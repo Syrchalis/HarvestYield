@@ -1,14 +1,16 @@
-﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91086F9A-6330-4FD1-BB74-760D2E9D3102}</ProjectGuid>
+    <ProjectGuid>{282A8B32-1B93-4905-A121-5748DCFB4F64}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <NoStandardLibraries>false</NoStandardLibraries>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HarvestYieldPatch</RootNamespace>
     <AssemblyName>HarvestYieldPatch</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,59 +24,34 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>Assemblies\</OutputPath>
+    <OutputPath>..\Assemblies\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <RootNamespace>HarvestYieldPatch</RootNamespace>
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0Harmony, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Assemblies\0Harmony.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\..\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="0Harmony.dll" />
-    <Content Include="Assemblies\0Harmony.dll" />
-    <Content Include="Assemblies\HarvestYieldPatch.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="HarvestYieldPatch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include=".vs\HarvestYieldLibrary\v15\.suo" />
-    <None Include=".vs\HarvestYieldLibrary\v15\Server\sqlite3\db.lock" />
-    <None Include=".vs\HarvestYieldLibrary\v15\Server\sqlite3\storage.ide" />
-    <None Include=".vs\HarvestYieldLibrary\v15\Server\sqlite3\storage.ide-shm" />
-    <None Include=".vs\HarvestYieldLibrary\v15\Server\sqlite3\storage.ide-wal" />
-    <None Include=".vs\HarvestYieldPatch\v15\.suo" />
-    <None Include=".vs\HarvestYieldPatch\v15\Server\sqlite3\db.lock" />
-    <None Include=".vs\HarvestYieldPatch\v15\Server\sqlite3\storage.ide" />
-    <None Include=".vs\HarvestYieldPatch\v15\Server\sqlite3\storage.ide-shm" />
-    <None Include=".vs\HarvestYieldPatch\v15\Server\sqlite3\storage.ide-wal" />
-    <None Include=".vs\Solution1\v15\.suo" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSHARP.Targets" />
-  <ProjectExtensions>
-    <VisualStudio AllowExistingFolder="true" />
-  </ProjectExtensions>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

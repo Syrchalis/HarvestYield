@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Reflection.Emit;
 
 namespace HarvestYieldPatch
-{ 
+{
     [HarmonyPatch]
     public static class HarvestYieldPatch
     {
@@ -46,25 +46,10 @@ namespace HarvestYieldPatch
                 }
             }
         }
+
         public static int YieldNowPatch(Plant p, Pawn actor)
         {
-            float harvestFactor = actor.GetStatValue(StatDefOf.PlantHarvestYield, true);
-            float harvestAmount = p.YieldNow() * harvestFactor;
-
-            if (harvestFactor < 1)
-            {
-#if DEBUG
-                Log.Message("harvestFactor (<1):" + harvestFactor + " and harvestAmount:" + harvestAmount);
-#endif
-                return p.YieldNow();
-            }
-            else
-            {
-#if DEBUG
-                Log.Message("harvestFactor (>1):" + harvestFactor + " and harvestAmount:" + harvestAmount);
-#endif
-                return GenMath.RoundRandom(harvestAmount);
-            };
+            return GenMath.RoundRandom(p.YieldNow() * actor.GetStatValue(StatDefOf.PlantHarvestYield, true));
         }
     }
 }
