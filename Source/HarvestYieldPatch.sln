@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestYieldPatch", "HarvestYieldPatch\HarvestYieldPatch.csproj", "{282A8B32-1B93-4905-A121-5748DCFB4F64}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestYieldPatch", "HarvestYieldPatch.csproj", "{282A8B32-1B93-4905-A121-5748DCFB4F64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,6 +20,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {96E9B340-CAE4-44C5-B591-A6258A94E8E0}
+		SolutionGuid = {3688AC47-95AA-4DB8-BA30-831D89C091B0}
 	EndGlobalSection
 EndGlobal
