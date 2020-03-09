@@ -1,4 +1,4 @@
-﻿using Harmony;
+﻿using HarmonyLib;
 using RimWorld;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace HarvestYieldPatch
             MethodInfo GetStatValue = AccessTools.Method(typeof(StatExtension), nameof(StatExtension.GetStatValue));
             foreach (CodeInstruction i in instructions)
             {
-                if (i.opcode == OpCodes.Call && i.operand == RoundRandom)
+                if (i.opcode == OpCodes.Call && (MethodInfo)i.operand == RoundRandom)
                 {
                     yield return new CodeInstruction(OpCodes.Ldarg_1);//doer pawn
                     yield return new CodeInstruction(OpCodes.Ldsfld, AnimalGatherYield);

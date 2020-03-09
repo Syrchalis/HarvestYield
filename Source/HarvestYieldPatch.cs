@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 using System.Reflection;
@@ -9,36 +9,19 @@ using System.Reflection.Emit;
 
 namespace HarvestYieldPatch
 {
-    [HarmonyPatch]
     public static class HarvestYieldPatch
     {
-        public static MethodInfo match = typeof(Plant).GetMethod("YieldNow");
-        public static MethodInfo replaceWith = typeof(HarvestYieldPatch).GetMethod("YieldNowPatch");
-        public static MethodInfo TargetMethod()
+        public static MethodInfo NewYieldNowMethod = typeof(HarvestYieldPatch).GetMethod("YieldNowPatch");
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            Type mainType = typeof(JobDriver_PlantWork);
-#if DEBUG
-            Log.Message("[HarvestYieldPatch]TargetMethod: Main Type Found");
-#endif
-            Type iteratorType = mainType.GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.FullName.Contains("c__Iterator"));
-#if DEBUG
-            Log.Message("[HarvestYieldPatch]TargetMethod: Iterator Type Resolved");
-#endif
-            Type anonStoreyType = iteratorType.GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First(t => t.FullName.Contains("c__AnonStorey"));
-#if DEBUG
-            Log.Message("[HarvestYieldPatch]TargetMethod: AnonStorey Type Resolved");
-#endif
-            return anonStoreyType.GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).First(m => m.Name.Contains("m__") && m.ReturnType == typeof(void));
-        }
-        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instr)
-        {
-            foreach (CodeInstruction i in instr)
+            MethodInfo YieldNow = AccessTools.Method(typeof(Plant), nameof(Plant.YieldNow));
+            foreach (CodeInstruction i in instructions)
             {
-                if (i.operand == match)
+                if (i.opcode == OpCodes.Callvirt && (MethodInfo)i.operand == YieldNow)
                 {
-                    //Log.Message("Instruction insertion complete!");
+
                     yield return new CodeInstruction(OpCodes.Ldloc_0);
-                    yield return new CodeInstruction(OpCodes.Call, replaceWith);
+                    yield return new CodeInstruction(OpCodes.Call, NewYieldNowMethod);
                 }
                 else
                 {
