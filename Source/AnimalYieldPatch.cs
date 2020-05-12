@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -17,7 +18,7 @@ namespace HarvestYieldPatch
         {
             MethodInfo RoundRandom = AccessTools.Method(typeof(GenMath), nameof(GenMath.RoundRandom));
             FieldInfo AnimalGatherYield = AccessTools.Field(typeof(StatDefOf), nameof(StatDefOf.AnimalGatherYield));
-            MethodInfo GetStatValue = AccessTools.Method(typeof(StatExtension), nameof(StatExtension.GetStatValue));
+            MethodInfo GetStatValue = AccessTools.Method(typeof(StatExtension), nameof(StatExtension.GetStatValue), new Type[] { typeof(Thing), typeof(StatDef), typeof(bool) });
             foreach (CodeInstruction i in instructions)
             {
                 if (i.opcode == OpCodes.Call && (MethodInfo)i.operand == RoundRandom)
