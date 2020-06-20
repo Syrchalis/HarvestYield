@@ -1,4 +1,0 @@
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SYR_HarvestYield\1.1\Assemblies\HarvestYieldPatch.dll
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SYR_HarvestYield\Source\obj\Release\HarvestYieldPatch.csprojAssemblyReference.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SYR_HarvestYield\Source\obj\Release\HarvestYieldPatch.csproj.CoreCompileInputs.cache
-C:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\SYR_HarvestYield\Source\obj\Release\HarvestYieldPatch.dll
