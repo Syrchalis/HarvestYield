@@ -5,6 +5,7 @@
     <supportedVersions>
         <li>1.0</li>
         <li>1.1</li>
+        <li>1.2</li>
     </supportedVersions>
 	<url>https://ludeon.com/forums/index.php?topic=43449</url>
     <description>You think you know what the stat "Plant Harvest Yield" does? Well, let me surprise you - it does NOT increase the amount you get when you harvest plants, like "Mining Yield" does for ores.
