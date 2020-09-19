@@ -87,34 +87,11 @@ namespace HarvestYieldPatch
         }
         public static void UpdateMaxValues()
         {
-            if (plantYield == null)
-            {
-                plantYield = DefDatabase<StatDef>.AllDefs.First(statdef => statdef == StatDefOf.PlantHarvestYield);
-            }
-            plantYield.maxValue = HarvestYieldSettings.plantYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
-
-            if (animalYield == null)
-            {
-                animalYield = DefDatabase<StatDef>.AllDefs.First(statdef => statdef == StatDefOf.AnimalGatherYield);
-            }
-            animalYield.maxValue = HarvestYieldSettings.animalYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
-
-            if (miningYield == null)
-            {
-                miningYield = DefDatabase<StatDef>.AllDefs.First(statdef => statdef == StatDefOf.MiningYield);
-            }
-            miningYield.maxValue = HarvestYieldSettings.miningYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
-
-            if (butcherYield == null)
-            {
-                butcherYield = DefDatabase<StatDef>.AllDefs.First(statdef => statdef == HarvestYieldDefOf.ButcheryFleshEfficiency);
-            }
-            butcherYield.maxValue = HarvestYieldSettings.butcherYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
+            StatDefOf.PlantHarvestYield.maxValue = HarvestYieldSettings.plantYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
+            StatDefOf.AnimalGatherYield.maxValue = HarvestYieldSettings.animalYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
+            StatDefOf.MiningYield.maxValue = HarvestYieldSettings.miningYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
+            HarvestYieldDefOf.ButcheryFleshEfficiency.maxValue = HarvestYieldSettings.butcherYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
         }
-        public static StatDef plantYield = null;
-        public static StatDef animalYield = null;
-        public static StatDef miningYield = null;
-        public static StatDef butcherYield = null;
     }
 
     public class HarvestYieldSettings : ModSettings
