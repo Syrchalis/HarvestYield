@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <HarvestYieldSettingsCategory>Harvest Yield</HarvestYieldSettingsCategory>
+  
+  <HarvestYieldMax>Max plant harvest yield</HarvestYieldMax>
+  <HarvestYieldMaxTooltip>Maximum amount of plant harvest yield a pawn can ever have</HarvestYieldMaxTooltip>
+  <AnimalYieldMax>Max animal gather yield</AnimalYieldMax>
+  <AnimalYieldMaxTooltip>Maximum amount of animal gather yield a pawn can ever have</AnimalYieldMaxTooltip>
+  <MiningYieldMax>Max mining yield</MiningYieldMax>
+  <MiningYieldMaxTooltip>Maximum amount of mining yield a pawn can ever have</MiningYieldMaxTooltip>
+  <ButcherYieldMax>Max butchery efficiency</ButcherYieldMax>
+  <ButcherYieldMaxTooltip>Maximum amount of butchery efficiency a pawn can ever have</ButcherYieldMaxTooltip>
+
+</LanguageData>

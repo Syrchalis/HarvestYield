@@ -17,16 +17,17 @@ namespace HarvestYieldPatch
                 GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Instance).First().
                 GetMethods(BindingFlags.NonPublic | BindingFlags.Instance).
                 MaxBy(mi => mi.GetMethodBody()?.GetILAsByteArray().Length ?? -1),
-                transpiler: new HarmonyMethod(typeof(HarvestYieldPatch).GetMethod("Transpiler")));
+                transpiler: new HarmonyMethod(typeof(PlantYieldPatch).GetMethod("Transpiler")));
             harmony.PatchAll(Assembly.GetExecutingAssembly());
+            HarvestYieldCore.UpdateMaxValues();
         }
-
+        
         //Debug Options to set Milk Fullness and Wool Growth to max
         [DebugAction("Pawns", "Force Wool Growth", actionType = DebugActionType.ToolMapForPawns, allowedGameStates = AllowedGameStates.PlayingOnMap)]
         public static void ForceWool(Pawn p)
         {
             CompShearable compShearable = p.TryGetComp<CompShearable>();
-            if (compShearable != null)
+            if (p.Faction != null && compShearable != null)
             {
                 while (compShearable.Fullness < 1)
                 {
@@ -39,7 +40,7 @@ namespace HarvestYieldPatch
         public static void ForceMilk(Pawn p)
         {
             CompMilkable compMilkable = p.TryGetComp<CompMilkable>();
-            if (compMilkable != null)
+            if (p.Faction != null && compMilkable != null)
             {
                 while (compMilkable.Fullness < 1)
                 {

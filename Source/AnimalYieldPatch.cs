@@ -17,10 +17,26 @@ namespace HarvestYieldPatch
         public static IEnumerable<CodeInstruction> AnimalYieldPatch_Prefix(IEnumerable<CodeInstruction> instructions)
         {
             MethodInfo RoundRandom = AccessTools.Method(typeof(GenMath), nameof(GenMath.RoundRandom));
+            MethodInfo RandChance = AccessTools.Method(typeof(Rand), nameof(Rand.Chance));
             FieldInfo AnimalGatherYield = AccessTools.Field(typeof(StatDefOf), nameof(StatDefOf.AnimalGatherYield));
             MethodInfo GetStatValue = AccessTools.Method(typeof(StatExtension), nameof(StatExtension.GetStatValue), new Type[] { typeof(Thing), typeof(StatDef), typeof(bool) });
+            bool found = false;
             foreach (CodeInstruction i in instructions)
             {
+                if (i.opcode == OpCodes.Call && (MethodInfo)i.operand == RandChance)
+                {
+                    yield return i;
+                    yield return new CodeInstruction(OpCodes.Pop);
+                    found = true;
+                    continue;
+                }
+
+                if (found && i.opcode == OpCodes.Brtrue_S)
+                {
+                    i.opcode = OpCodes.Br_S;
+                    found = false;
+                }
+                
                 if (i.opcode == OpCodes.Call && (MethodInfo)i.operand == RoundRandom)
                 {
                     yield return new CodeInstruction(OpCodes.Ldarg_1);//doer pawn

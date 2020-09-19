@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
-
-	<Operation Class="PatchOperationRemove">
-		<success>Always</success>
-		<xpath>/Defs/StatDef[defName = "MiningYield" or defName = "AnimalGatherYield" or defName = "PlantHarvestYield" or defName = "ButcheryFleshEfficiency" or defName = "ButcheryMechanoidEfficiency"]/maxValue</xpath>
-	</Operation>
 	
 	<Operation Class="PatchOperationAdd">
 		<success>Always</success>
-		<xpath>/Defs/ThingDef[@Name = "PlantBase"]/plant</xpath>
+		<xpath>/Defs/ThingDef[@Name = "PlantBaseNonEdible"]/plant</xpath>
 			<value>
 				<harvestFailable>false</harvestFailable>
 			</value>
