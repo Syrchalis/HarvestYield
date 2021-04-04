@@ -9,7 +9,9 @@
   <AnimalYieldMaxTooltip>Maximum amount of animal gather yield a pawn can ever have</AnimalYieldMaxTooltip>
   <MiningYieldMax>Max mining yield</MiningYieldMax>
   <MiningYieldMaxTooltip>Maximum amount of mining yield a pawn can ever have</MiningYieldMaxTooltip>
-  <ButcherYieldMax>Max butchery efficiency</ButcherYieldMax>
-  <ButcherYieldMaxTooltip>Maximum amount of butchery efficiency a pawn can ever have</ButcherYieldMaxTooltip>
+  <ButcherFleshYieldMax>Max flesh butchery efficiency</ButcherFleshYieldMax>
+  <ButcherFleshYieldMaxTooltip>Maximum amount of flesh butchery efficiency a pawn can ever have</ButcherFleshYieldMaxTooltip>
+  <ButcherMechYieldMax>Max mechanoid butchery efficiency</ButcherMechYieldMax>
+  <ButcherMechYieldMaxTooltip>Maximum amount of mechanoid butchery efficiency a pawn can ever have</ButcherMechYieldMaxTooltip>
 
 </LanguageData>

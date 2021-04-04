@@ -12,5 +12,6 @@ namespace HarvestYieldPatch
     public static class HarvestYieldDefOf
     {
         public static StatDef ButcheryFleshEfficiency;
+        public static StatDef ButcheryMechanoidEfficiency;
     }
 }

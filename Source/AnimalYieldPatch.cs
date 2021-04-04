@@ -14,7 +14,7 @@ namespace HarvestYieldPatch
     public static class AnimalYieldPatch
     {
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> AnimalYieldPatch_Prefix(IEnumerable<CodeInstruction> instructions)
+        public static IEnumerable<CodeInstruction> AnimalYieldPatch_Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             MethodInfo RoundRandom = AccessTools.Method(typeof(GenMath), nameof(GenMath.RoundRandom));
             MethodInfo RandChance = AccessTools.Method(typeof(Rand), nameof(Rand.Chance));

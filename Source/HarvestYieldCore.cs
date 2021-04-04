@@ -63,16 +63,28 @@ namespace HarvestYieldPatch
                 HarvestYieldSettings.miningYieldMax = listing_Standard.Slider(GenMath.RoundTo(HarvestYieldSettings.miningYieldMax, 0.1f), 1f, 5.1f);
                 listing_Standard.Gap(12f);
 
-                if (HarvestYieldSettings.butcherYieldMax > 5.0f)
+                if (HarvestYieldSettings.butcherFleshYieldMax > 5.0f)
                 {
-                    listing_Standard.Label("ButcherYieldMax".Translate() + ": " + "Unlimited".Translate(), -1, "ButcherYieldMaxTooltip".Translate());
+                    listing_Standard.Label("ButcherFleshYieldMax".Translate() + ": " + "Unlimited".Translate(), -1, "ButcherFleshYieldMaxTooltip".Translate());
                 }
                 else
                 {
-                    listing_Standard.Label("ButcherYieldMax".Translate() + ": " + HarvestYieldSettings.butcherYieldMax.ToStringPercent(), -1, "ButcherYieldMaxTooltip".Translate());
+                    listing_Standard.Label("ButcherFleshYieldMax".Translate() + ": " + HarvestYieldSettings.butcherFleshYieldMax.ToStringPercent(), -1, "ButcherFleshYieldMaxTooltip".Translate());
                 }
                 listing_Standard.Gap(6f);
-                HarvestYieldSettings.butcherYieldMax = listing_Standard.Slider(GenMath.RoundTo(HarvestYieldSettings.butcherYieldMax, 0.1f), 1f, 5.1f);
+                HarvestYieldSettings.butcherFleshYieldMax = listing_Standard.Slider(GenMath.RoundTo(HarvestYieldSettings.butcherFleshYieldMax, 0.1f), 1f, 5.1f);
+                listing_Standard.Gap(12f);
+
+                if (HarvestYieldSettings.butcherMechYieldMax > 5.0f)
+                {
+                    listing_Standard.Label("ButcherMechYieldMax".Translate() + ": " + "Unlimited".Translate(), -1, "ButcherMechYieldMaxTooltip".Translate());
+                }
+                else
+                {
+                    listing_Standard.Label("ButcherMechYieldMax".Translate() + ": " + HarvestYieldSettings.butcherMechYieldMax.ToStringPercent(), -1, "ButcherMechYieldMaxTooltip".Translate());
+                }
+                listing_Standard.Gap(6f);
+                HarvestYieldSettings.butcherMechYieldMax = listing_Standard.Slider(GenMath.RoundTo(HarvestYieldSettings.butcherMechYieldMax, 0.1f), 1f, 5.1f);
                 listing_Standard.Gap(12f);
 
                 listing_Standard.End();
@@ -88,9 +100,10 @@ namespace HarvestYieldPatch
         public static void UpdateMaxValues()
         {
             StatDefOf.PlantHarvestYield.maxValue = HarvestYieldSettings.plantYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
-            StatDefOf.AnimalGatherYield.maxValue = HarvestYieldSettings.animalYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
-            StatDefOf.MiningYield.maxValue = HarvestYieldSettings.miningYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
-            HarvestYieldDefOf.ButcheryFleshEfficiency.maxValue = HarvestYieldSettings.butcherYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.plantYieldMax;
+            StatDefOf.AnimalGatherYield.maxValue = HarvestYieldSettings.animalYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.animalYieldMax;
+            StatDefOf.MiningYield.maxValue = HarvestYieldSettings.miningYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.miningYieldMax;
+            HarvestYieldDefOf.ButcheryFleshEfficiency.maxValue = HarvestYieldSettings.butcherFleshYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.butcherFleshYieldMax;
+            HarvestYieldDefOf.ButcheryMechanoidEfficiency.maxValue = HarvestYieldSettings.butcherMechYieldMax > 5.0f ? 9999999f : HarvestYieldSettings.butcherMechYieldMax;
         }
     }
 
@@ -99,7 +112,8 @@ namespace HarvestYieldPatch
         public static float plantYieldMax = 2;
         public static float animalYieldMax = 2;
         public static float miningYieldMax = 2;
-        public static float butcherYieldMax = 2;
+        public static float butcherFleshYieldMax = 2;
+        public static float butcherMechYieldMax = 2;
 
         public override void ExposeData()
         {
@@ -107,7 +121,8 @@ namespace HarvestYieldPatch
             Scribe_Values.Look<float>(ref plantYieldMax, "HarvestYieldMax", 2, false);
             Scribe_Values.Look<float>(ref animalYieldMax, "AnimalYieldMax", 2, false);
             Scribe_Values.Look<float>(ref miningYieldMax, "MiningYieldMax", 2, false);
-            Scribe_Values.Look<float>(ref butcherYieldMax, "ButcherYieldMax", 2, false);
+            Scribe_Values.Look<float>(ref butcherFleshYieldMax, "butcherFleshYieldMax", 2, false);
+            Scribe_Values.Look<float>(ref butcherMechYieldMax, "butcherMechYieldMax", 2, false);
         }
     }
 }
